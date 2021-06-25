@@ -10,12 +10,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "PERSON")
-public class Testdto {
-
+@Table(name = "PRODUCT")
+public class Productdto {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String personId;
-    private String personName;
-
+    private String productId;
+    private String productName;
 }
