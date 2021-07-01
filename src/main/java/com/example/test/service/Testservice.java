@@ -1,8 +1,10 @@
 package com.example.test.service;
 
+import com.example.test.dto.Mongodbdto;
 import com.example.test.dto.Orderdto;
 import com.example.test.dto.Persondto;
 import com.example.test.dto.Productdto;
+import com.example.test.repository.Mongorepository;
 import com.example.test.repository.Orderrepository;
 import com.example.test.repository.Personrepository;
 import com.example.test.repository.Productrepository;
@@ -21,6 +23,8 @@ public class Testservice {
     private final Personrepository personrepository;
     private final Productrepository productrepository;
     private final Orderrepository orderrepository;
+    private final Mongorepository mongorepository;
+
 
     @Transactional
     public String savePerson(Persondto persondto){
@@ -53,6 +57,11 @@ public class Testservice {
     public List<Orderdto> getOrderist() {
         List<Orderdto> orderdtos = orderrepository.findAll();
         return orderdtos;
+    }
+
+    @Transactional
+    public String saveMongodb(Mongodbdto mongodbdto){
+        return mongorepository.save(mongodbdto).getId();
     }
 
 }

@@ -21,28 +21,24 @@ public class Testcontroller {
     @PostMapping("/post/person")
     public ResponseEntity<String> insertPerson(@RequestBody Persondto persondto) {
         testservice.savePerson(persondto);
-
         return ResponseEntity.ok().body("person 추가완료");
     }
 
     @GetMapping("/get/person")
     public ResponseEntity<List<Persondto>> selectPerson() {
         List<Persondto> personlist = testservice.getPersonlist();
-
         return ResponseEntity.ok(personlist);
     }
 
     @PostMapping("/post/product")
     public ResponseEntity<String> insertProduct(@RequestBody Productdto productdto) {
-        testservice.saveProduct(productdto);
-
+       testservice.saveProduct(productdto);
         return ResponseEntity.ok().body("product 추가완료");
     }
 
     @GetMapping("/get/product")
     public ResponseEntity<List<Productdto>> selectProduct() {
         List<Productdto> productlist = testservice.getProductlist();
-
         return ResponseEntity.ok(productlist);
     }
 
@@ -50,7 +46,7 @@ public class Testcontroller {
     public ResponseEntity<String> insertOrder(@RequestBody Orderdto orderdto) {
         testservice.saveOrder(orderdto);
 
-        return ResponseEntity.ok().body("order 추가완료");
+        return ResponseEntity.ok("order 추가완료");
     }
 
     @GetMapping("/get/order")
