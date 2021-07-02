@@ -3,6 +3,7 @@ package com.example.test.controller;
 import com.example.test.dto.Orderdto;
 import com.example.test.dto.Persondto;
 import com.example.test.dto.Productdto;
+import com.example.test.service.Testkafkaproducer;
 import com.example.test.service.Testservice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,19 @@ public class Testcontroller {
 
     @Autowired
     private Testservice testservice;
+
+    private Testkafkaproducer testkafkaproducer;
+
+    @Autowired
+    Testcontroller(Testkafkaproducer testkafkaproducer){
+        this.testkafkaproducer = testkafkaproducer;
+    }
+
+    @PostMapping("/kafka/post/person")
+    public String sendMesseage(@RequestBody Persondto persondto) {
+        this.testkafkaproducer.sendMessage(persondto);
+        return "성공";
+    }
 
     @PostMapping("/post/person")
     public ResponseEntity<String> insertPerson(@RequestBody Persondto persondto) {
