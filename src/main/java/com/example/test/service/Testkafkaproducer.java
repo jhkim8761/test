@@ -1,6 +1,7 @@
 package com.example.test.service;
 
 import com.example.test.dto.Persondto;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,12 @@ public class Testkafkaproducer {
     public void sendMessage(Persondto persondto){
         Persondto sendPersondto = new Persondto();
         sendPersondto.setPersonId(persondto.getPersonId());
-        System.out.println(persondto);
-        //this.kafkaTemplate.send(TOPIC, String.valueOf(persondto));
+        sendPersondto.setPersonName(persondto.getPersonName());
+
+        Gson gson = new Gson();
+        String json = gson.toJson(sendPersondto);
+        System.out.println(json);
+        this.kafkaTemplate.send(TOPIC, json);
     }
 
 }
