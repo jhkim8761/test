@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Testkafkaproducer {
     private static final String TOPIC = "exam";
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Persondto> kafkaTemplate;
 
     @Autowired
     public Testkafkaproducer(KafkaTemplate kafkaTemplate){
@@ -16,7 +16,10 @@ public class Testkafkaproducer {
     }
 
     public void sendMessage(Persondto persondto){
+        Persondto sendPersondto = new Persondto();
+        sendPersondto.setPersonId(persondto.getPersonId());
         System.out.println(persondto);
-        this.kafkaTemplate.send(TOPIC, String.valueOf(persondto));
+        //this.kafkaTemplate.send(TOPIC, String.valueOf(persondto));
     }
+
 }
