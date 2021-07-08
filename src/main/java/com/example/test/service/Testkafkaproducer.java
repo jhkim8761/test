@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Testkafkaproducer {
     private static final String TOPIC = "exam";
-    private final KafkaTemplate<String, Persondto> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Autowired
     public Testkafkaproducer(KafkaTemplate kafkaTemplate){
