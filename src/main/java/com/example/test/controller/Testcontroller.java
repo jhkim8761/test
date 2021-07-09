@@ -27,9 +27,15 @@ public class Testcontroller {
     }
 
     @PostMapping("/kafka/post/person")
-    public String sendMesseage(@RequestBody Persondto persondto) {
-        this.testkafkaproducer.sendMessage(persondto);
-        return "성공";
+    public ResponseEntity<String> kafkaInsertPerson(@RequestBody Persondto persondto) {
+        this.testkafkaproducer.kafkaInsertPerson(persondto);
+        return ResponseEntity.ok().body("Topic Person 추가완료");
+    }
+
+    @PostMapping("/kafka/post/product")
+    public ResponseEntity<String> kafkaInsertProduct(@RequestBody Productdto productdto) {
+        this.testkafkaproducer.kafkaInsertProduct(productdto);
+        return ResponseEntity.ok().body("Topic Product 추가완료");
     }
 
     @PostMapping("/post/person")
