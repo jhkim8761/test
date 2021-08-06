@@ -42,6 +42,11 @@ public class Testkafkaconsumer {
         productdto.setProductId(productId);
         productdto.setProductName(productName);
 
+        System.out.println("============================");
+        System.out.println(productdto.getProductId());
+        System.out.println(productdto.getProductName());
+        System.out.println("============================");
+
         productrepository.save(productdto).getProductId();
     }
 }
